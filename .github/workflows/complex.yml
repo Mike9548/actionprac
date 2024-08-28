@@ -3,20 +3,20 @@ name: complex
 on: push
 
 jobs:
-  ubuntu
-    runs-on:ubuntu-latest
+  ubuntu:
+    runs-on: ubuntu-latest
     steps:
     -run: date
-  macos
-    runs-on:macos-latest 
+  macos:
+    runs-on: macos-latest 
     steps:
     -run: date
-  windows
-    runs-on:windows-latest
+  windows:
+    runs-on: windows-latest
     steps:
     -run: date
-  depends
+  depends:
     needs:[ubuntu, windows, macos]
-    runs-on:windows-latest 
+    runs-on:windows-latest
     steps:
     -run: date 
