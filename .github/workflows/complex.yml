@@ -3,20 +3,27 @@ name: complex
 on: push
 
 jobs:
-  ubuntu:
+  ubuntu_job:
     runs-on: ubuntu-latest
     steps:
-    -run: date
-  macos:
-    runs-on: macos-latest 
+      - name: Print date on Ubuntu
+        run: date
+
+  macos_job:
+    runs-on: macos-latest
     steps:
-    -run: date
-  windows:
+      - name: Print date on macOS
+        run: date
+
+  windows_job:
     runs-on: windows-latest
     steps:
-    -run: date
-  depends:
-    needs:[ubuntu, windows, macos]
-    runs-on:windows-latest
+      - name: Print date on Windows
+        run: date
+
+  dependent_job:
+    runs-on: windows-latest
+    needs: [ubuntu_job, windows_job, macos_job]
     steps:
-    -run: date 
+      - name: Print date in dependent job
+        run: date
